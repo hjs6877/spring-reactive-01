@@ -16,6 +16,10 @@ public class Logger {
         log.info("# onNext(): {}", data);
     }
 
+    public static void onError(Throwable error) {
+        log.error("error happened", error);
+    }
+
     public static void onNext(String message, Object data) {
         log.info("# {} onNext(): {}", message, data);
     }
