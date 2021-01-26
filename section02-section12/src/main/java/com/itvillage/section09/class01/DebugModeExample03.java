@@ -8,13 +8,13 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * onOperatorDebug() Hook 메서드를 이용한 Debug mode
  */
-public class DebugModeExample04 {
+public class DebugModeExample03 {
     public static Map<String, String> fruits = new HashMap<>();
 
     static {
@@ -25,8 +25,6 @@ public class DebugModeExample04 {
     }
 
     public static void main(String[] args) {
-        Hooks.onOperatorDebug();
-
         Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
                 .map(String::toLowerCase)
                 .map(fruit -> fruit.substring(0, fruit.length() - 1))

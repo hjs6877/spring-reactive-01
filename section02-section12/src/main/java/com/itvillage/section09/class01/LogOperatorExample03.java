@@ -4,17 +4,15 @@ import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
-import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
- * onOperatorDebug() Hook 메서드를 이용한 Debug mode
+ * log() operator Custom Category 를 사용하는 예제
  */
-public class DebugModeExample05 {
+public class LogOperatorExample03 {
     public static Map<String, String> fruits = new HashMap<>();
 
     static {
@@ -25,12 +23,18 @@ public class DebugModeExample05 {
     }
 
     public static void main(String[] args) {
-        Hooks.onOperatorDebug();
-
         Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
+                .subscribeOn(Schedulers.boundedElastic())
+                .log("Fruit.Source")
+                .publishOn(Schedulers.parallel())
                 .map(String::toLowerCase)
+                .log("Fruit.Lower")
                 .map(fruit -> fruit.substring(0, fruit.length() - 1))
+                .log("Fruit.Substring")
                 .map(fruits::get)
+                .log("Fruit.Name")
                 .subscribe(Logger::onNext, Logger::onError);
+
+        TimeUtils.sleep(100L);
     }
 }

@@ -1,20 +1,16 @@
 package com.itvillage.section09.class01;
 
 import com.itvillage.utils.Logger;
-import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
-import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
- * onOperatorDebug() Hook 메서드를 이용한 Debug mode
+ * log() operator와 Debug mode 를 같이 사용한 예제
  */
-public class DebugModeExample04 {
+public class LogOperatorExample02 {
     public static Map<String, String> fruits = new HashMap<>();
 
     static {
@@ -28,9 +24,13 @@ public class DebugModeExample04 {
         Hooks.onOperatorDebug();
 
         Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
+                .log()
                 .map(String::toLowerCase)
+                .log()
                 .map(fruit -> fruit.substring(0, fruit.length() - 1))
+                .log()
                 .map(fruits::get)
+                .log()
                 .subscribe(Logger::onNext, Logger::onError);
     }
 }
