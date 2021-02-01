@@ -9,8 +9,8 @@ public class FluxExample04 {
         Flux.concat(
                 Flux.just("Venus"),
                 Flux.just("Earth"),
-                Flux.just("Mars")
-        ).collectList()
-                .subscribe(planetList -> log.info("# Solar System: {}", planetList));
+                Flux.just("Mars"))
+            .collectList()
+            .subscribe(planetList -> log.info("# Solar System: {}", planetList));
     }
 }

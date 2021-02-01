@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * onOperatorDebug() Hook 메서드를 이용한 Debug mode
+ * Non-Debug mode
  */
 public class DebugModeExample03 {
     public static Map<String, String> fruits = new HashMap<>();

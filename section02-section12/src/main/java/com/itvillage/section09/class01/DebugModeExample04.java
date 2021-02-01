@@ -31,6 +31,7 @@ public class DebugModeExample04 {
                 .map(String::toLowerCase)
                 .map(fruit -> fruit.substring(0, fruit.length() - 1))
                 .map(fruits::get)
+                .map(translated -> "맛있는 " + translated)
                 .subscribe(Logger::onNext, Logger::onError);
     }
 }
