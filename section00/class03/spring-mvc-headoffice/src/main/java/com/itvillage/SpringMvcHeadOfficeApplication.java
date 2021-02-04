@@ -28,7 +28,7 @@ public class SpringMvcHeadOfficeApplication {
 		SpringApplication.run(SpringMvcHeadOfficeApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner dataLoader() {
+	public CommandLineRunner request() {
 		return (String... args) -> {
 			// 서버쪽으로 대량의 호출 및 시간 측정을 한다.
 			StopWatch stopWatch = new StopWatch("client -> server");
