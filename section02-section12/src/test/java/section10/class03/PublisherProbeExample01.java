@@ -1,4 +1,4 @@
-package section10.class02;
+package section10.class03;
 
 import org.junit.jupiter.api.Test;
 
