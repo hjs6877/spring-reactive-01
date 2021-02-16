@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
 
 /**
- * 1개 이상의 emit된 데이터를 한꺼번에 검증
+ * 1개 이상의 emit 된 데이터를 한꺼번에 검증
  */
 public class StepVerifierGeneralExample05Test {
     @Test
-    public void occurErrorTest() {
+    public void divideByTwoTest() {
         StepVerifier
                 .create(StepVerifierGeneralExample.divideByTwo())
                 .expectSubscription()
