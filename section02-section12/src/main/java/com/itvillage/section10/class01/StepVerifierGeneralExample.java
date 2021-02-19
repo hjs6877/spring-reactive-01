@@ -11,21 +11,18 @@ public class StepVerifierGeneralExample {
                 .just("Hello", "Reactor");
     }
 
-    public static Flux<Integer> divideByTwo() {
-        return Flux
-                .just(2, 4, 6, 8, 10)
+    public static Flux<Integer> divideByTwo(Flux<Integer> source) {
+        return source
                 .zipWith(Flux.just(2, 2, 2, 2, 2), (x, y) -> x/y);
     }
 
-    public static Flux<Integer> occurError() {
-        return Flux
-                .just(2, 4, 6, 8, 10)
+    public static Flux<Integer> occurError(Flux<Integer> source) {
+        return source
                 .zipWith(Flux.just(2, 2, 2, 2, 0), (x, y) -> x/y);
     }
 
-    public static Flux<Integer> rangeNumber() {
-        return Flux
-                .range(0, 1000)
+    public static Flux<Integer> takeNumber(Flux<Integer> source) {
+        return source
                 .take(500);
     }
 }

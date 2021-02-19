@@ -1,15 +1,15 @@
 package com.itvillage.section10.class02;
 
 import com.itvillage.utils.Logger;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 public class StepVerifierContextExample {
-    final private static String KEY = "helloTarget";
-    public static Mono<String> helloMessage(String helloTarget) {
-        return Mono
-                .deferContextual(ctx -> Mono.just("Hello" + " " + ctx.get(KEY)))
-                .publishOn(Schedulers.parallel())
-                .contextWrite(context -> context.put(KEY, helloTarget));
+    public static Mono<String> helloMessage(Mono<String> source, String key) {
+        return source
+                .zipWith(Mono.deferContextual(ctx -> Mono.just(ctx.get(key))))
+                .map(tuple -> tuple.getT1() + ", " + tuple.getT2());
+
     }
 }

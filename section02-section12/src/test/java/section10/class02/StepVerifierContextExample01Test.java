@@ -13,17 +13,22 @@ import reactor.test.StepVerifier;
  *  - then()을 사용하여 검증을 위한 후속 작업을 진행할 수 있다.
  */
 public class StepVerifierContextExample01Test {
+    final private static String KEY = "helloTarget";
+
     @Test
     public void helloMessageTest() {
-        Mono<String> source = StepVerifierContextExample.helloMessage("Reactor");
+        Mono<String> source = Mono.just("Hello");
 
         StepVerifier
-                .create(source)
+                .create(StepVerifierContextExample
+                        .helloMessage(source, KEY)
+                        .contextWrite(context -> context.put(KEY, "Reactor"))
+                )
                 .expectSubscription()
                 .expectAccessibleContext()
                 .hasKey("helloTarget")
                 .then()
-                .expectNext("Hello Reactor")
+                .expectNext("Hello, Reactor")
                 .expectComplete()
                 .verify();
     }
