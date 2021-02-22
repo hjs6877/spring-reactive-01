@@ -1,7 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.StepVerifierRecordExample;
-import com.itvillage.utils.Logger;
+import com.itvillage.section10.class02.RecordExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
@@ -22,7 +21,7 @@ public class StepVerifierRecordExample01Test {
     @Test
     public void getCityTest() {
         StepVerifier
-                .create(StepVerifierRecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
+                .create(RecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
                 .expectSubscription()
                 .recordWith(ArrayList::new)
                 .thenConsumeWhile(country -> !country.isEmpty())

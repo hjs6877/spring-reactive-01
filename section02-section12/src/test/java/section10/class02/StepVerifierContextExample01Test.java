@@ -1,7 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.StepVerifierContextExample;
-import com.itvillage.utils.Logger;
+import com.itvillage.section10.class02.ContextExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -20,7 +19,7 @@ public class StepVerifierContextExample01Test {
         Mono<String> source = Mono.just("Hello");
 
         StepVerifier
-                .create(StepVerifierContextExample
+                .create(ContextExample
                         .helloMessage(source, KEY)
                         .contextWrite(context -> context.put(KEY, "Reactor"))
                 )

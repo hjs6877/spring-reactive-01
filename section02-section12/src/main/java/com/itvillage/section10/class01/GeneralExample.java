@@ -5,7 +5,7 @@ import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-public class StepVerifierGeneralExample {
+public class GeneralExample {
     public static Flux<String> sayHelloReactor() {
         return Flux
                 .just("Hello", "Reactor");
@@ -21,8 +21,8 @@ public class StepVerifierGeneralExample {
                 .zipWith(Flux.just(2, 2, 2, 2, 0), (x, y) -> x/y);
     }
 
-    public static Flux<Integer> takeNumber(Flux<Integer> source) {
+    public static Flux<Integer> takeNumber(Flux<Integer> source, long n) {
         return source
-                .take(500);
+                .take(n);
     }
 }

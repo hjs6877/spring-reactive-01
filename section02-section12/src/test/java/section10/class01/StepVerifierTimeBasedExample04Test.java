@@ -1,6 +1,6 @@
 package section10.class01;
 
-import com.itvillage.section10.class01.StepVerifierTimeBasedExample;
+import com.itvillage.section10.class01.TimeBasedExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
@@ -15,7 +15,7 @@ public class StepVerifierTimeBasedExample04Test {
     @Test
     public void getCOVID19CountTest() {
         StepVerifier
-                .withVirtualTime(() -> StepVerifierTimeBasedExample.getVoteCount(
+                .withVirtualTime(() -> TimeBasedExample.getVoteCount(
                         Flux.interval(Duration.ofMinutes(1))
                     )
                 )

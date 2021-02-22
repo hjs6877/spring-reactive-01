@@ -1,6 +1,6 @@
 package section10.class01;
 
-import com.itvillage.section10.class01.StepVerifierGeneralExample;
+import com.itvillage.section10.class01.GeneralExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
@@ -15,7 +15,7 @@ public class StepVerifierGeneralExample06Test {
     public void rangeNumberTest() {
         Flux<Integer> source = Flux.range(0, 1000);
         StepVerifier
-                .create(StepVerifierGeneralExample.takeNumber(source),
+                .create(GeneralExample.takeNumber(source, 500),
                         StepVerifierOptions.create().scenarioName("Verify from 0 to 499"))
                 .expectSubscription()
                 .expectNext(0)

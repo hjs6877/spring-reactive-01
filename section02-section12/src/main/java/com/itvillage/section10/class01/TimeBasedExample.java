@@ -6,7 +6,7 @@ import reactor.util.function.Tuples;
 
 import java.time.Duration;
 
-public class StepVerifierTimeBasedExample {
+public class TimeBasedExample {
     public static Flux<Tuple2<String, Integer>> getCOVID19Count(Flux<Long> source) {
         return source
                 .flatMap(notUser -> Flux.just(

@@ -1,6 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.StepVerifierRecordExample;
+import com.itvillage.section10.class02.RecordExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
@@ -8,9 +8,7 @@ import reactor.test.StepVerifier;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasLength;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.Every.everyItem;
 
 /**
  * emit 되는 모든 데이터들을 캡쳐하여 컬렉션에 기록한 후, 기록된 데이터들을 검증하는 예제
@@ -22,7 +20,7 @@ public class StepVerifierRecordExample02Test {
     @Test
     public void getCityTest() {
         StepVerifier
-                .create(StepVerifierRecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
+                .create(RecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
                 .expectSubscription()
                 .recordWith(ArrayList::new)
                 .thenConsumeWhile(country -> !country.isEmpty())

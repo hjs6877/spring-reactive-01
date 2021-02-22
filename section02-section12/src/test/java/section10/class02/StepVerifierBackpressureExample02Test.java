@@ -1,12 +1,7 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.StepVerifierBackpressureExample;
-import com.itvillage.utils.Logger;
-import com.itvillage.utils.TimeUtils;
+import com.itvillage.section10.class02.BackpressureExample;
 import org.junit.jupiter.api.Test;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.FluxSink;
-import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 /**
@@ -19,7 +14,7 @@ public class StepVerifierBackpressureExample02Test {
     @Test
     public void generateNumberTest() {
         StepVerifier
-                .create(StepVerifierBackpressureExample.generateNumber(), 1L)
+                .create(BackpressureExample.generateNumber(), 1L)
                 .thenConsumeWhile(num -> num >= 1)
                 .expectError()
                 .verifyThenAssertThat()
