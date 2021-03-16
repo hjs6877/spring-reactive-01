@@ -16,7 +16,21 @@ public class SampleData {
                     Tuples.of("ICX", 2_080),
                     Tuples.of("EOS", 4_020),
                     Tuples.of("BCH", 558_000));
-
+    public static final List<Tuple2<Integer, Integer>> btcTopPricesPerYear =
+            Arrays.asList(
+                    Tuples.of(2010, 565),
+                    Tuples.of(2011, 36_094),
+                    Tuples.of(2012, 17_425),
+                    Tuples.of(2013, 1_405_209),
+                    Tuples.of(2014, 1_237_182),
+                    Tuples.of(2015, 557_603),
+                    Tuples.of(2016, 1_111_811),
+                    Tuples.of(2017, 22_483_583),
+                    Tuples.of(2018, 19_521_543),
+                    Tuples.of(2019, 15_761_568),
+                    Tuples.of(2020, 22_439_002),
+                    Tuples.of(2021, 63_364_000)
+            );
     private static class DataGenerator {
 
     }

@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 public class FromIterableExample02 {
     public static void main(String[] args) {
         Flux
-                .fromIterable(SampleData.coins)
-                .subscribe(coin -> Logger.onNext("coin 명: " + coin.getT1() + ", 현재가: " + coin.getT2()));
+            .fromIterable(SampleData.coins)
+            .subscribe(coin -> Logger.onNext("coin 명: " + coin.getT1() + ", 현재가: " + coin.getT2()));
     }
 }

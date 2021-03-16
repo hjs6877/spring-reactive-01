@@ -9,8 +9,9 @@ import reactor.core.publisher.Mono;
  */
 public class JustOrEmptyExample02 {
     public static void main(String[] args) {
-        Mono.justOrEmpty(null)
-                .log()
-                .subscribe(Logger::onNext);
+        Mono
+            .justOrEmpty(null)
+            .log()
+            .subscribe(Logger::onNext);
     }
 }

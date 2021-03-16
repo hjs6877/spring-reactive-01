@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 public class FromStreamExample02 {
     public static void main(String[] args) {
         Flux
-                .fromStream(() -> SampleData.coinNames.stream()
-                                    .filter(coin -> coin.equals("BTC") || coin.equals("ETH"))
-                                    .collect(Collectors.toList())
-                                    .stream())
-                .subscribe(Logger::onNext);
+            .fromStream(() -> SampleData.coinNames.stream()
+                                .filter(coin -> coin.equals("BTC") || coin.equals("ETH"))
+                                .collect(Collectors.toList())
+                                .stream())
+            .subscribe(Logger::onNext);
     }
 }
