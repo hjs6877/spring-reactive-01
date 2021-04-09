@@ -4,7 +4,10 @@ import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SampleData {
     public static final List<String> coinNames = Arrays.asList("BTC", "ETH", "XRP", "ICX", "EOS", "BCH");
@@ -31,6 +34,12 @@ public class SampleData {
                     Tuples.of(2020, 22_439_002),
                     Tuples.of(2021, 63_364_000)
             );
+
+    public static final Map<Integer, Integer> btcTopPricesPerYearMap = new HashMap<>();
+
+    public static Map<Integer, Tuple2<Integer, Integer>> getBtcTopPricesPerYearMap() {
+        return btcTopPricesPerYear.stream().collect(Collectors.toMap(t1 -> t1.getT1(), t2 -> t2));
+    }
     private static class DataGenerator {
 
     }
