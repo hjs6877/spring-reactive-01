@@ -9,6 +9,7 @@ import reactor.core.publisher.FluxSink;
 
 /**
  * create 개념 이해 예제
+ *  - Subscriber 가 request 할 경우에 next signal 이벤트를 발생하는 예제
  *  - generate operator 와 달리 한번에 여러 건의 next signal 이벤트를 발생 시킬 수 있다.
  */
 public class CreateExample01 {
@@ -18,7 +19,7 @@ public class CreateExample01 {
         Logger.info("# start");
         Flux.create((FluxSink<Integer> emitter) -> {
             emitter.onRequest(n -> {
-                TimeUtils.sleep(2000L);
+                TimeUtils.sleep(1000L);
                 for (int i = 1; i <= n; i++) {
                     if (count >= 10) {
                         emitter.complete();
@@ -27,6 +28,10 @@ public class CreateExample01 {
                         emitter.next(i);
                     }
                 }
+            });
+
+            emitter.onDispose(() -> {
+                Logger.info("# clean up");
             });
         }).subscribe(new BaseSubscriber<Integer>() {
             @Override
