@@ -15,7 +15,7 @@ public class UsingExample01 {
         Mono
                 .using(() -> "Resource",
                         resource -> Mono.just(resource),
-                        resource -> Logger.info("cleanup: " + resource)
+                        resource -> Logger.info("cleanup: {}", resource)
                 )
                 .subscribe(Logger::onNext);
     }

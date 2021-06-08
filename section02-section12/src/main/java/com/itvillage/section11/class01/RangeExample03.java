@@ -14,11 +14,11 @@ import java.util.List;
 public class RangeExample03 {
     public static void main(String[] args) {
         Flux
-                .range(7, 5)
-                .subscribe(idx -> {
-                    int year = SampleData.btcTopPricesPerYear.get(idx).getT1();
-                    int price = SampleData.btcTopPricesPerYear.get(idx).getT2();
-                    Logger.onNext(year + "'s: " + price);
-                });
+            .range(7, 5)
+            .subscribe(idx -> {
+                int year = SampleData.btcTopPricesPerYear.get(idx).getT1();
+                int price = SampleData.btcTopPricesPerYear.get(idx).getT2();
+                Logger.onNext(year + "'s: " + price);
+            });
     }
 }

@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-@Slf4j
 public class PublisherProbeExample {
     public static Mono<Void> processTaskNoPost(Mono<String> taskName, Mono<Void> doNothing) {
         return taskName
@@ -20,7 +19,7 @@ public class PublisherProbeExample {
     }
 
     private static Mono executeTask(String taskName) {
-        log.info("# process task...");
+        Logger.info("# process task...");
         return Mono.empty();
     }
 }

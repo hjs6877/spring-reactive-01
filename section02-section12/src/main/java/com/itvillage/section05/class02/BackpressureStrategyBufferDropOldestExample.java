@@ -19,7 +19,7 @@ public class BackpressureStrategyBufferDropOldestExample {
         Flux
                 .interval(Duration.ofMillis(1L))
                 .onBackpressureBuffer(100,
-                        dropped -> Logger.info(" # dropped: " + dropped),
+                        dropped -> Logger.info(" # dropped: {}", dropped),
                         BufferOverflowStrategy.DROP_OLDEST)
                 .publishOn(Schedulers.parallel())
                 .subscribe(data -> {

@@ -8,7 +8,6 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
-@Slf4j
 public class SinkManyExample02 {
     public static void main(String[] args) {
         // 하나 이상의 Subscriber에게 데이터를 emit 한다.

@@ -8,7 +8,6 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
-@Slf4j
 public class SinkManyExample01 {
     public static void main(String[] args) {
         // 단 하나의 Subscriber만 허용된다.

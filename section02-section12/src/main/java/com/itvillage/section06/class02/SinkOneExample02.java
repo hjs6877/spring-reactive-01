@@ -8,7 +8,6 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
-@Slf4j
 public class SinkOneExample02 {
     public static void main(String[] args) {
         // emit 된 데이터 중에서 단 하나의 데이터만 Subscriber에게 전달한다. 나머지 데이터는 Drop 됨.

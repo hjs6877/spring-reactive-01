@@ -8,6 +8,10 @@ public class Logger {
         log.info("{}",data);
     }
 
+    public static void info(String msg, Object data) {
+        log.info(msg, data);
+    }
+
     public static void doOnNext(Object data) {
         log.info("# doOnNext(): {}", data);
     }
@@ -21,7 +25,7 @@ public class Logger {
     }
 
     public static void onError(Throwable error) {
-        log.error("error happened", error);
+        log.error("error happened: ", error);
     }
 
     public static void onNext(String message, Object data) {

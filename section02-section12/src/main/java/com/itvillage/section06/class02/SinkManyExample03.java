@@ -8,7 +8,6 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
-@Slf4j
 public class SinkManyExample03 {
     public static void main(String[] args) {
         // 구독 이후, emit 된 데이터 중에서 최신 데이터 2개만 replay 한다.

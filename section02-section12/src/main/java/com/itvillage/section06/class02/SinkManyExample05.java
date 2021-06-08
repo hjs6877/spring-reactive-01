@@ -8,7 +8,6 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
-@Slf4j
 public class SinkManyExample05 {
     public static void main(String[] args) {
         // 구독 시점과 상관없이 emit된 모든 데이터를 replay 한다.

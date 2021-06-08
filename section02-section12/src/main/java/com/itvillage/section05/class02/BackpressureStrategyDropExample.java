@@ -15,7 +15,7 @@ public class BackpressureStrategyDropExample {
     public static void main(String[] args) {
         Flux
                 .interval(Duration.ofMillis(1L))
-                .onBackpressureDrop(dropped -> Logger.info("# dropped: " + dropped))
+                .onBackpressureDrop(dropped -> Logger.info("# dropped: {}", dropped))
                 .publishOn(Schedulers.parallel())
                 .subscribe(data -> {
                         TimeUtils.sleep(5L);

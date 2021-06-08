@@ -1,9 +1,9 @@
 package com.itvillage.section03.class02;
 
+import com.itvillage.utils.Logger;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
-@Slf4j
 public class FluxExample04 {
     public static void main(String[] args) {
         Flux.concat(
@@ -11,6 +11,6 @@ public class FluxExample04 {
                 Flux.just("Earth"),
                 Flux.just("Mars"))
             .collectList()
-            .subscribe(planetList -> log.info("# Solar System: {}", planetList));
+            .subscribe(planetList -> Logger.info("# Solar System: {}", planetList));
     }
 }

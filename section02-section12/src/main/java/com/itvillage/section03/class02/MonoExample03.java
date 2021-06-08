@@ -1,5 +1,6 @@
 package com.itvillage.section03.class02;
 
+import com.itvillage.utils.Logger;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,6 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 import java.util.Collections;
 
-@Slf4j
 public class MonoExample03 {
     public static void main(String[] args) {
         URI worldTimeUri = UriComponentsBuilder.newInstance().scheme("http")
@@ -36,11 +36,11 @@ public class MonoExample03 {
                     return dateTime;
                 })
                 .subscribe(
-                        data -> log.info("# emitted data: {}", data),
+                        data -> Logger.info("# emitted data: " + data),
                         error -> {
-                            log.error("# error happened", error);
+                            Logger.onError(error);
                         },
-                        () -> log.info("# emitted onComplete signal")
+                        () -> Logger.info("# emitted onComplete signal")
                 );
 
     }

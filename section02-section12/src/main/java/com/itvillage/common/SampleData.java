@@ -19,6 +19,7 @@ public class SampleData {
                     Tuples.of("ICX", 2_080),
                     Tuples.of("EOS", 4_020),
                     Tuples.of("BCH", 558_000));
+
     public static final List<Tuple2<Integer, Integer>> btcTopPricesPerYear =
             Arrays.asList(
                     Tuples.of(2010, 565),

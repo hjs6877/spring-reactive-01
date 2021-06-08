@@ -21,7 +21,7 @@ public class GenerateExample02 {
                     if (state.getT2() == 9)
                         sink.complete();
                     return Tuples.of(state.getT1(), state.getT2() + 1);
-                }, state -> Logger.info("# 구구단 " + state.getT1() + "단 종료!"))
+                }, state -> Logger.info("# 구구단 {}단 종료!", state.getT1()))
                 .subscribe(Logger::onNext);
     }
 }
