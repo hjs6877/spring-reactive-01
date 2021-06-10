@@ -36,12 +36,30 @@ public class SampleData {
                     Tuples.of(2021, 63_364_000)
             );
 
-    public static final Map<Integer, Integer> btcTopPricesPerYearMap = new HashMap<>();
+    public static final List<CoronaVaccine> covidVaccines = CoronaVaccine.toList();
 
     public static Map<Integer, Tuple2<Integer, Integer>> getBtcTopPricesPerYearMap() {
         return btcTopPricesPerYear.stream().collect(Collectors.toMap(t1 -> t1.getT1(), t2 -> t2));
     }
     private static class DataGenerator {
 
+    }
+
+    public enum CoronaVaccine {
+        Pfizer,
+        AstraZeneca,
+        Moderna,
+        Janssen,
+        Novavax;
+
+        public static List<CoronaVaccine> toList() {
+            return Arrays.asList(
+                    CoronaVaccine.Pfizer,
+                    CoronaVaccine.AstraZeneca,
+                    CoronaVaccine.Moderna,
+                    CoronaVaccine.Janssen,
+                    CoronaVaccine.Novavax
+            );
+        }
     }
 }
