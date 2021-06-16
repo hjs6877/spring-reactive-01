@@ -13,9 +13,9 @@ import static com.itvillage.common.CoronaVaccineService.isGreaterThan;
 public class FilterWhenExample01 {
     public static void main(String[] args) {
         Flux
-                .fromIterable(SampleData.coronaVaccineNames)
-                .filterWhen(vaccine -> isGreaterThan(vaccine, 3_000_000))
-                .subscribe(Logger::onNext);
+            .fromIterable(SampleData.coronaVaccineNames)
+            .filterWhen(vaccine -> isGreaterThan(vaccine, 3_000_000))
+            .subscribe(Logger::onNext);
 
         TimeUtils.sleep(1000);
     }
