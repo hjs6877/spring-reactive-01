@@ -5,15 +5,14 @@ import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
 
 /**
- * skip 활용 예제
- *  - 년도별 BTC 최고가 중에서 2000만원 이상이었던 년도 중, 오래된 년도의 2년을 건너뛴 가격을 표시한다.
+ * skipUntil 기본 예제
+ *  - 파라미터로 입력되는 Predicate가 true인 동안 emit 된 데이터를 건너뛴다.
  */
-public class SkipExample03 {
+public class SkipWhileExample {
     public static void main(String[] args) {
         Flux
             .fromIterable(SampleData.btcTopPricesPerYear)
-            .filter(tuple -> tuple.getT2() >= 20_000_000)
-            .skip(2)
+            .skipWhile(tuple -> tuple.getT2() < 10_000_000)
             .subscribe(tuple -> Logger.onNext(tuple.getT1(), tuple.getT2()));
     }
 }
