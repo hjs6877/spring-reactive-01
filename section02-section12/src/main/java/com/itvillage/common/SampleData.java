@@ -4,6 +4,7 @@ import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,6 +46,17 @@ public class SampleData {
                     Tuples.of(CoronaVaccine.Janssen, 2_000_000),
                     Tuples.of(CoronaVaccine.Novavax, 2_500_000)
             );
+
+    public static Map<String, String> morseCodeMap = new HashMap<>();
+    static {
+        String[] morseCodes = {
+                ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--",
+                "-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        for (char c = 'a'; c <= 'a' + 25; c++) {
+            morseCodeMap.put(morseCodes[c - ('z' - 25)], Character.toString(c));
+        }
+    }
+
     public static Map<CoronaVaccine, Tuple2<CoronaVaccine, Integer>> getCoronaVaccinesMap() {
         return coronaVaccines.stream().collect(Collectors.toMap(t1 -> t1.getT1(), t2 -> t2));
     }
