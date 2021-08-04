@@ -19,7 +19,7 @@ public class MapExample02 {
             .subscribe(result -> Logger.onNext(result + "%"));
     }
 
-    private static double calculateProfitRate(final double buyPrice, Integer topPrice) {
+    private static double calculateProfitRate(final double buyPrice, Long topPrice) {
         return (topPrice - buyPrice) / buyPrice * 100;
     }
 }

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class GenerateExample03 {
     public static void main(String[] args) {
-        Map<Integer, Tuple2<Integer, Integer>> map = SampleData.getBtcTopPricesPerYearMap();
+        Map<Integer, Tuple2<Integer, Long>> map = SampleData.getBtcTopPricesPerYearMap();
         Flux
                 .generate(() -> 2017, (state, sink) -> {
                     if (state > 2021) {

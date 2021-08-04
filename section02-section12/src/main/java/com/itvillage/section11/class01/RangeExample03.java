@@ -17,7 +17,7 @@ public class RangeExample03 {
             .range(7, 5)
             .subscribe(idx -> {
                 int year = SampleData.btcTopPricesPerYear.get(idx).getT1();
-                int price = SampleData.btcTopPricesPerYear.get(idx).getT2();
+                long price = SampleData.btcTopPricesPerYear.get(idx).getT2();
                 Logger.onNext(year + "'s: " + price);
             });
     }

@@ -9,6 +9,9 @@ import reactor.core.publisher.Flux;
  */
 public class FlatMapExample02 {
     public static void main(String[] args) {
-        // TODO
+        Flux
+            .just(3)
+            .flatMap(dan -> Flux.range(1, 9).map(n -> dan + " * " + n + " = " + dan * n))
+            .subscribe(Logger::onNext);
     }
 }
