@@ -15,7 +15,7 @@ import java.util.List;
  *  - Iterable로 emit 된 데이터를 평탄화 한다.
  *  - 유형별 코로나 백신 list 를 평탄화 하는 예제
  */
-public class FlatMapIterable {
+public class FlatMapIterableExample {
     public static void main(String[] args) {
         Flux.just(getViralVectorVaccines(), getmRNAVaccines(), getSubunitVaccines())
                 .flatMapIterable(vaccines -> vaccines)
