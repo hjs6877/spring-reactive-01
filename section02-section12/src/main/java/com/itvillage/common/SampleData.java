@@ -47,6 +47,23 @@ public class SampleData {
                     Tuples.of(CoronaVaccine.Novavax, 2_500_000)
             );
 
+    public static final List<Tuple2<CoronaVaccine, Integer>> viralVectorVaccines =
+            Arrays.asList(
+                    Tuples.of(CoronaVaccine.AstraZeneca, 3_000_000),
+                    Tuples.of(CoronaVaccine.Janssen, 2_000_000)
+            );
+
+    public static final List<Tuple2<CoronaVaccine, Integer>> mRNAVaccines =
+            Arrays.asList(
+                    Tuples.of(CoronaVaccine.Pfizer, 1_000_000),
+                    Tuples.of(CoronaVaccine.Moderna, 4_000_000)
+            );
+
+    public static final List<Tuple2<CoronaVaccine, Integer>> subunitVaccines =
+            Arrays.asList(
+                    Tuples.of(CoronaVaccine.Novavax, 2_500_000)
+            );
+
     public static Map<String, String> morseCodeMap = new HashMap<>();
     static {
         String[] morseCodes = {
