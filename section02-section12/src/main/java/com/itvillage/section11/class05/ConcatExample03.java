@@ -1,25 +1,24 @@
-package com.itvillage.section11.class04;
+package com.itvillage.section11.class05;
 
 import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
-import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
 import reactor.util.function.Tuple2;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * flatMapIterable 기본 개념 예제
- *  - Iterable로 emit 된 데이터를 순차적으로 평탄화 한다.
- *  - 유형별 코로나 백신 list 를 평탄화 하는 예제
+ * Concat 활용 예제
+ *  - 유형별 코로나 백신 list 를 concat 하는 예제
  */
-public class FlatMapIterableExample {
+public class ConcatExample03 {
     public static void main(String[] args) {
-        Flux.just(getViralVectorVaccines(), getmRNAVaccines(), getSubunitVaccines())
-                .flatMapIterable(vaccines -> vaccines)
-                .subscribe(Logger::onNext);
+        Flux
+            .concat(
+                Flux.fromIterable(getViralVectorVaccines()),
+                Flux.fromIterable(getmRNAVaccines()),
+                Flux.fromIterable(getSubunitVaccines()))
+            .subscribe(Logger::onNext);
     }
 
     private static List<Tuple2<SampleData.CoronaVaccine, Integer>> getViralVectorVaccines() {

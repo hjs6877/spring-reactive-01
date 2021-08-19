@@ -4,6 +4,9 @@ import com.itvillage.utils.Logger;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
+/**
+ * Flux 에서의 Operator 체인 사용 예제
+ */
 public class FluxExample02 {
     public static void main(String[] args) {
         Flux.fromArray(new Integer[]{3, 6, 7, 9})
