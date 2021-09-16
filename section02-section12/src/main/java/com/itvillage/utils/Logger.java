@@ -32,6 +32,14 @@ public class Logger {
         log.error("error happened: ", error);
     }
 
+    public static void onComplete() {
+        log.error("# onComplete()");
+    }
+
+    public static void onComplete(Object data) {
+        log.info("# onComplete(): {}", data);
+    }
+
     public static void onNext(String message, Object data) {
         log.info("# {} onNext(): {}", message, data);
     }

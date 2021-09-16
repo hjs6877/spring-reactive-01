@@ -9,6 +9,7 @@ import java.time.Duration;
 
 /**
  * and 기본 개념 예제
+ *  - Mono와 파라미터로 입력된 Publisher가 종료할때 까지 대기한 후, Mono<Void>를 반환한다.
  */
 public class AndExample01 {
     public static void main(String[] args) {
@@ -25,9 +26,9 @@ public class AndExample01 {
             .subscribe(
                 Logger::onNext,
                 Logger::onError,
-                () -> Logger.info("Complete!")
+                Logger::onComplete
             );
 
-        TimeUtils.sleep(4000);
+        TimeUtils.sleep(5000);
     }
 }
