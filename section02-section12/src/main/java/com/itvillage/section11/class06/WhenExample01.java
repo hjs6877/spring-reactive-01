@@ -8,19 +8,24 @@ import reactor.core.publisher.Mono;
 import java.time.Duration;
 
 /**
- * and 기본 개념 예제
- *  - Mono와 파라미터로 입력된 Publisher가 종료할때 까지 대기한 후, Mono<Void>를 반환한다.
+ * when 기본 개념 예제
+ *  - 파라미터로 입력된 Publisher들이 종료할 때 까지 대기한 후, Mono<Void>를 반환한다.
+ *  - Mono 에서 emit 하는 데이터는 Downstream으로 전달 되지 않는다.
  */
-public class AndExample01 {
+public class WhenExample01 {
     public static void main(String[] args) {
         Mono
             .just("Okay")
             .delayElement(Duration.ofSeconds(1))
             .doOnNext(Logger::doOnNext)
-            .and(
+            .when(
                 Flux
                     .just("Hi", "Tom")
                     .delayElements(Duration.ofSeconds(2))
+                    .doOnNext(Logger::doOnNext),
+                Flux
+                    .just("Hello", "David")
+                    .delayElements(Duration.ofSeconds(1))
                     .doOnNext(Logger::doOnNext)
             )
             .subscribe(
