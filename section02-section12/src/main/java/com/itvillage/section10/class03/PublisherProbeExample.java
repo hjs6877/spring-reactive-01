@@ -7,13 +7,19 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 @Slf4j
 public class PublisherProbeExample {
-    public static Mono<Void> processTask(Mono<String> taskName, Mono<Void> doNothing) {
+    public static Mono<Void> processTaskNoPost(Mono<String> taskName, Mono<Void> doNothing) {
         return taskName
                 .flatMap(task -> executeTask(task))
                 .switchIfEmpty(doNothing);
     }
 
-    private static Mono<Void> executeTask(String taskName) {
+    public static Mono<String> processTaskWithPost(Mono<String> taskName, Mono<String> postTask) {
+        return taskName
+                .flatMap(task -> executeTask(task))
+                .switchIfEmpty(postTask);
+    }
+
+    private static Mono executeTask(String taskName) {
         log.info("# process task...");
         return Mono.empty();
     }
