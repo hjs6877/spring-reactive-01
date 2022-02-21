@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class HotSequenceExample {
     public static void main(String[] args) {
         Flux<String> concertFlux =
-                Flux.fromStream(Stream.of("Singer 1", "Singer 2", "Singer 3", "Singer 4", "Singer 5"))
+                Flux.fromStream(Stream.of("Singer A", "Singer B", "Singer C", "Singer D", "Singer E"))
                         .delayElements(Duration.ofSeconds(1)).share();
 
         concertFlux.subscribe(singer -> Logger.info("# Subscriber1 is watching {}'s song.", singer));

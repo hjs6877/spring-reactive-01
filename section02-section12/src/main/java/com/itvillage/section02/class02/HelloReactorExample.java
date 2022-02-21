@@ -1,7 +1,6 @@
-package com.itvillage.section02.class03;
+package com.itvillage.section02.class02;
 
 import com.itvillage.utils.Logger;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 public class HelloReactorExample {
