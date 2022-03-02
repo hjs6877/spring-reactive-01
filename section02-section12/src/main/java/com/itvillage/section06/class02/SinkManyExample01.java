@@ -2,15 +2,18 @@ package com.itvillage.section06.class02;
 
 import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
+/**
+ * Sinks.Many 예제
+ *  - unicast()통해 단 하나의 Subscriber만 허용하는 예제
+ */
 public class SinkManyExample01 {
     public static void main(String[] args) {
-        // 단 하나의 Subscriber만 허용된다.
+        // 단 하나의 Subscriber만 데이터를 전달 받을 수 있다.
         Sinks.Many<Integer> unicastSink = Sinks.many().unicast().onBackpressureBuffer();
         Flux<Integer> fluxView = unicastSink.asFlux();
 
@@ -24,7 +27,5 @@ public class SinkManyExample01 {
 
         // TODO 주석 전, 후 비교해서 보여 줄 것.
 //        fluxView.subscribe(data -> Logger.onNext("Subscriber2", data));
-
-        TimeUtils.sleep(1000L);
     }
 }
