@@ -9,11 +9,11 @@ import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
 /**
  * Sinks.Many 예제
- *  - unicast()통해 단 하나의 Subscriber만 허용하는 예제
+ *  - unicast()를 사용해서 단 하나의 Subscriber에게만 데이터를 emit하는 예제
  */
 public class SinkManyExample01 {
     public static void main(String[] args) {
-        // 단 하나의 Subscriber만 데이터를 전달 받을 수 있다.
+        // 단 하나의 Subscriber에게만 데이터를 emit할 수 있다.
         Sinks.Many<Integer> unicastSink = Sinks.many().unicast().onBackpressureBuffer();
         Flux<Integer> fluxView = unicastSink.asFlux();
 

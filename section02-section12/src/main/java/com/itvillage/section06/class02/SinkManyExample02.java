@@ -8,9 +8,13 @@ import reactor.core.publisher.Sinks;
 
 import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 
+/**
+ * Sinks.Many 예제
+ *  - multicast()를 사용해서 하나 이상의 Subscriber에게 데이터를 emit하는 예제
+ */
 public class SinkManyExample02 {
     public static void main(String[] args) {
-        // 하나 이상의 Subscriber에게 데이터를 emit 한다.
+        // 하나 이상의 Subscriber에게 데이터를 emit할 수 있다.
         Sinks.Many<Integer> multicastSink = Sinks.many().multicast().onBackpressureBuffer();
         Flux<Integer> fluxView = multicastSink.asFlux();
 
@@ -23,7 +27,5 @@ public class SinkManyExample02 {
         fluxView.subscribe(data -> Logger.onNext("Subscriber2", data));
 
         multicastSink.emitNext(3, FAIL_FAST);
-
-        TimeUtils.sleep(1000L);
     }
 }
