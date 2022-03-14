@@ -4,7 +4,7 @@ import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
 
 /**
- * Sequence의 Operator 체인에서 최초의 쓰레드는 subscribe( )가
+ * Sequence의 Operator 체인에서 최초의 쓰레드는 subscribe()가
  * 호출되는 scope에 있는 쓰레드이다.
  */
 public class SchedulerOperatorExample01 {

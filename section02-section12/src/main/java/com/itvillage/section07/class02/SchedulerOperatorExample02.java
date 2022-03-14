@@ -12,16 +12,12 @@ import reactor.core.scheduler.Schedulers;
 public class SchedulerOperatorExample02 {
     public static void main(String[] args) {
         Flux.fromArray(new Integer[] {1, 3, 5, 7})
-                .log()
+                .doOnNext(data -> Logger.doOnNext("fromArray", data))
                 .publishOn(Schedulers.parallel())
-                .filter(data -> {
-                    Logger.filter(data);
-                    return data > 3;
-                })
-                .map(data -> {
-                    Logger.map(data);
-                    return data * 10;
-                })
+                .filter(data -> data > 3)
+                .doOnNext(data -> Logger.doOnNext("filter", data))
+                .map(data -> data * 10)
+                .doOnNext(data -> Logger.doOnNext("map", data))
                 .subscribe(Logger::onNext);
 
         TimeUtils.sleep(500L);

@@ -16,6 +16,10 @@ public class Logger {
         log.info("# doOnNext(): {}", data);
     }
 
+    public static void doOnNext(String operator, Object data) {
+        log.info("# doOnNext() {}: {}", operator, data);
+    }
+
     public static void doOnRequest(Object data) {
         log.info("# doOnRequest(): {}", data);
     }
