@@ -20,6 +20,10 @@ public class Logger {
         log.info("# doOnNext() {}: {}", operator, data);
     }
 
+    public static void doOnNext(String taskName, String operator, Object data) {
+        log.info("# doOnNext() {} {}: {}", taskName, operator, data);
+    }
+
     public static void doOnRequest(Object data) {
         log.info("# doOnRequest(): {}", data);
     }

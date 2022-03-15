@@ -12,33 +12,32 @@ import reactor.core.scheduler.Schedulers;
 public class SchedulersNewBoundedElasticExample01 {
     public static void main(String[] args) {
         Scheduler scheduler = Schedulers.newBoundedElastic(2, 10, "I/O-Thread");
-        Mono<Integer> flux = Mono.just(1)
-                .log()
+        Mono<Integer> mono = Mono.just(1)
                 .subscribeOn(scheduler);
 
 
-        flux.subscribe(data -> {
+        mono.subscribe(data -> {
             TimeUtils.sleep(2000L);
             Logger.onNext("subscribe 1", data);
         });
 
-        flux.subscribe(data -> {
+        mono.subscribe(data -> {
             TimeUtils.sleep(2000L);
             Logger.onNext("subscribe 2", data);
         });
 
-        flux.subscribe(data -> {
+        mono.subscribe(data -> {
             TimeUtils.sleep(1000L);
             Logger.onNext("subscribe 3", data);
         });
 
-        flux.subscribe(data -> {
+        mono.subscribe(data -> {
             TimeUtils.sleep(1000L);
             Logger.onNext("subscribe 4", data);
         });
 
 
-        TimeUtils.sleep(5000L);
+        TimeUtils.sleep(4000L);
 
         scheduler.dispose();
     }
