@@ -15,9 +15,14 @@ public class DeferExample01 {
         Mono<LocalDateTime> justMono = Mono.just(LocalDateTime.now());
         Mono<LocalDateTime> deferMono = Mono.defer(() -> Mono.just(LocalDateTime.now()));
 
-        TimeUtils.sleep(3000);
+        TimeUtils.sleep(2000);
 
-        justMono.subscribe(data -> Logger.onNext("just", data));
-        deferMono.subscribe(data -> Logger.onNext("defer", data));
+        justMono.subscribe(data -> Logger.onNext("just1", data));
+        deferMono.subscribe(data -> Logger.onNext("defer1", data));
+
+        TimeUtils.sleep(2000);
+
+        justMono.subscribe(data -> Logger.onNext("just2", data));
+        deferMono.subscribe(data -> Logger.onNext("defer2", data));
     }
 }

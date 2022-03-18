@@ -16,6 +16,7 @@ public class ContextIntroduceExample01 {
         Mono<String> mono = Mono.deferContextual(ctx ->
                         Mono.just("Hello" + " " + ctx.get(key)).doOnNext(Logger::doOnNext)
                 )
+                .subscribeOn(Schedulers.boundedElastic())
                 .publishOn(Schedulers.parallel())
                 .transformDeferredContextual((mono2, ctx) -> mono2.map(data -> data + " " + ctx.get(key)))
                 .contextWrite(context -> context.put(key, "Reactor"));
