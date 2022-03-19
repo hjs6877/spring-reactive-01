@@ -20,7 +20,7 @@ public class ContextAPIExample02 {
                         Mono.just("ID: " + " " + ctx.get(key1) + ", " + "Name: " + ctx.get(key2))
         )
         .publishOn(Schedulers.parallel())
-        .contextWrite(context -> context.putAll((ContextView) Context.of(key2, "Kevin")))
+        .contextWrite(context -> context.putAll(Context.of(key2, "Kevin").readOnly()))
         .contextWrite(context -> context.put(key1, "itVillage"))
         .subscribe(Logger::onNext);
 
