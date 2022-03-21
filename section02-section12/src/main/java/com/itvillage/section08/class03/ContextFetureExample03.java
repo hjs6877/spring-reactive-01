@@ -7,7 +7,7 @@ import reactor.core.scheduler.Schedulers;
 
 /**
  * Context의 특징
- *  - 동일한 키에 대해서 write 할 경우, 해당 Operator 아래에서 가장 가까운 값을 읽는다.
+ *  - 동일한 키에 대해서 write 할 경우, 해당 키에 대한 값을 덮어 쓴다.
  */
 public class ContextFetureExample03 {
     public static void main(String[] args) {

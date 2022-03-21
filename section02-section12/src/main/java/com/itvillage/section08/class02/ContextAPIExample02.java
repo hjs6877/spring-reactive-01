@@ -8,7 +8,7 @@ import reactor.util.context.Context;
 import reactor.util.context.ContextView;
 
 /**
- * Context API 중에서 write API 예제 코드
+ * Context API 예제 코드
  *
  */
 public class ContextAPIExample02 {

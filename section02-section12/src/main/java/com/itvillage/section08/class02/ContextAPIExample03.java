@@ -7,7 +7,7 @@ import reactor.core.scheduler.Schedulers;
 import reactor.util.context.Context;
 
 /**
- * Context API 중에서 write API 예제 코드
+ * ContextView API 예제 코드
  *
  */
 public class ContextAPIExample03 {

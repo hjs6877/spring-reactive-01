@@ -7,17 +7,18 @@ import reactor.core.scheduler.Schedulers;
 
 /**
  * Context의 특징
- *  - 동일한 키에 대해서 write 할 경우, 해당 Operator 아래에서 가장 가까운 값을 읽는다.
+ *  - inner Sequence 내부에서는 외부 Context에 저장된 데이터를 읽을 수 있다.
+ *  - inner Sequence 내부에서 Context에 저장된 데이터는 inner Sequence 외부에서 읽을 수 없다.
  */
 public class ContextFetureExample04 {
     public static void main(String[] args) {
         String key1 = "id";
-        Mono.just("Name: Kevin")
-//            .transformDeferredContextual((stringMono, contextView) -> contextView.get("job")) // TODO 주석 해제 후, inner Context에 접급할 수 없다는것을 설명.
+        Mono.just("Kevin")
+//            .transformDeferredContextual((stringMono, contextView) -> contextView.get("job")) // TODO 주석 해제 후, inner Context에 접근할 수 없다는것을 설명.
             .flatMap(name -> Mono.deferContextual(ctx ->
-                    Mono.just("ID: " + " " + ctx.get(key1) + ", " + name)
+                    Mono.just(ctx.get(key1) + ", " + name)
                         .transformDeferredContextual((mono, innerCtx) ->
-                                mono.map(data -> data + ", " + "Job: " + innerCtx.get("job"))
+                                mono.map(data -> data + ", " + innerCtx.get("job"))
                         )
                         .contextWrite(context -> context.put("job", "Software Engineer"))
                 )

@@ -8,23 +8,24 @@ import reactor.core.scheduler.Schedulers;
 /**
  * Context의 특징
  *  - Context는 체인의 맨 아래에서부터 위로 전파된다.
- *      - Operator 체인에서 Context read 메서드가 Context write 메서드 밑에 있을 경우에는 write된 값을 read할 수 없다.
+ *      - 따라서 Operator 체인에서 Context read 메서드가 Context write 메서드 밑에 있을 경우에는 write된 값을 read할 수 없다.
  */
 public class ContextFetureExample02 {
     public static void main(String[] args) {
-        String key1 = "id";
-        String key2 = "name";
+        final String key1 = "id";
+        final String key2 = "name";
 
-        Mono.deferContextual(ctx ->
-                Mono.just("ID: " + " " + ctx.get(key1) + ", " + "Name: " + ctx.get(key2))
-        )
-        .publishOn(Schedulers.parallel())
-        .contextWrite(context -> context.put(key2, "Kevin"))
-        .transformDeferredContextual((mono, ctx) ->
-                Mono.just("ID: "+" "+ctx.get(key1) + ", "+"Name: "+ctx.getOrDefault(key2, "Tom"))
-        )
-        .contextWrite(context -> context.put(key1, "itVillage"))
-        .subscribe(Logger::onNext);
+        Mono
+            .deferContextual(ctx ->
+                    Mono.just(ctx.get(key1))
+            )
+            .publishOn(Schedulers.parallel())
+            .contextWrite(context -> context.put(key2, "Kevin"))
+            .transformDeferredContextual((mono, ctx) ->
+                    mono.map(data -> data + ", " + ctx.getOrDefault(key2, "Tom"))
+            )
+            .contextWrite(context -> context.put(key1, "itVillage"))
+            .subscribe(Logger::onNext);
 
         TimeUtils.sleep(100L);
     }
