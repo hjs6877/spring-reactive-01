@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * onOperatorDebug() Hook 메서드를 이용한 Debug mode
+ * onOperatorDebug() Hook 메서드를 이용한 Debug mode 예제
  */
 public class DebugModeExample04 {
     public static Map<String, String> fruits = new HashMap<>();
