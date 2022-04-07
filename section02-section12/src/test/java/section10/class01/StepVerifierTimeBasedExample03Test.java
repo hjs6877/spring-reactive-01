@@ -23,6 +23,5 @@ public class StepVerifierTimeBasedExample03Test {
                 .expectNextCount(11)
                 .expectError()
                 .verify(Duration.ofSeconds(3));
-
     }
 }

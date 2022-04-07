@@ -9,18 +9,18 @@ import java.time.Duration;
 public class TimeBasedExample {
     public static Flux<Tuple2<String, Integer>> getCOVID19Count(Flux<Long> source) {
         return source
-                .flatMap(notUser -> Flux.just(
-                                        Tuples.of("서울", 10),
-                                        Tuples.of("경기도", 5),
-                                        Tuples.of("강원도", 3),
-                                        Tuples.of("충청도", 6),
-                                        Tuples.of("경상도", 5),
-                                        Tuples.of("전라도", 8),
-                                        Tuples.of("인천", 2),
-                                        Tuples.of("대전", 1),
-                                        Tuples.of("대구", 2),
-                                        Tuples.of("부산", 3),
-                                        Tuples.of("제주도", 0)
+                .flatMap(notUse -> Flux.just(
+                                        Tuples.of("서울", 1000),
+                                        Tuples.of("경기도", 500),
+                                        Tuples.of("강원도", 300),
+                                        Tuples.of("충청도", 60),
+                                        Tuples.of("경상도", 100),
+                                        Tuples.of("전라도", 80),
+                                        Tuples.of("인천", 200),
+                                        Tuples.of("대전", 50),
+                                        Tuples.of("대구", 60),
+                                        Tuples.of("부산", 30),
+                                        Tuples.of("제주도", 5)
                                     )
                 );
     }
