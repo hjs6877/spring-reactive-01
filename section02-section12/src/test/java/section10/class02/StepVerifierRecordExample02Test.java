@@ -18,13 +18,17 @@ import static org.hamcrest.Matchers.is;
  */
 public class StepVerifierRecordExample02Test {
     @Test
-    public void getCityTest() {
+    public void getCountryTest() {
         StepVerifier
                 .create(RecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
                 .expectSubscription()
                 .recordWith(ArrayList::new)
                 .thenConsumeWhile(country -> !country.isEmpty())
-                .expectRecordedMatches(countries -> countries.size() == 4)
+                .expectRecordedMatches(countries ->
+                        countries
+                                .stream()
+                                .allMatch(country ->
+                                        Character.isUpperCase(country.charAt(0))))
                 .expectComplete()
                 .verify();
     }

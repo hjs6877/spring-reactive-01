@@ -19,7 +19,7 @@ import static org.hamcrest.core.Every.everyItem;
  */
 public class StepVerifierRecordExample01Test {
     @Test
-    public void getCityTest() {
+    public void getCountryTest() {
         StepVerifier
                 .create(RecordExample.getCountry(Flux.just("france", "russia", "greece", "poland")))
                 .expectSubscription()
@@ -36,10 +36,5 @@ public class StepVerifierRecordExample01Test {
                 })
                 .expectComplete()
                 .verify();
-
-
-
-
-
     }
 }
