@@ -8,7 +8,7 @@ import reactor.test.StepVerifier;
 /**
  * 1개 이상의 emit 된 데이터를 한꺼번에 검증
  */
-public class StepVerifierGeneralExample05Test {
+public class StepVerifierGeneralTestExample05 {
     @Test
     public void divideByTwoTest() {
         Flux<Integer> source = Flux.just(2, 4, 6, 8, 10);

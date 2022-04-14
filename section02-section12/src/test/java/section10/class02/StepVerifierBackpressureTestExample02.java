@@ -10,7 +10,7 @@ import reactor.test.StepVerifier;
  *  - verifyThenAssertThat()을 사용하여 검증 이후에 assertion method 를 사용하여 추가 검증을 할 수 있다.
  *  - hasDroppedElements()을 사용하여 drop 된 데이터가 있는지를 검증한다.
  */
-public class StepVerifierBackpressureExample02Test {
+public class StepVerifierBackpressureTestExample02 {
     @Test
     public void generateNumberTest() {
         StepVerifier

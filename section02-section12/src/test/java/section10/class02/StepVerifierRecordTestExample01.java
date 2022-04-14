@@ -17,7 +17,7 @@ import static org.hamcrest.core.Every.everyItem;
  *  - thenConsumeWhile()을 사용하여 조건에 맞는 데이터만 소비한다. 여기서 조건에 맞는 데이터들이 ArrayList 에 추가(기록)된다.
  *  - consumeRecordedWith()를 사용하여 기록된 데이터들을 소비한다. 여기서는 assertThat()을 사용하여 검증한다.
  */
-public class StepVerifierRecordExample01Test {
+public class StepVerifierRecordTestExample01 {
     @Test
     public void getCountryTest() {
         StepVerifier

@@ -4,15 +4,15 @@ import com.itvillage.section10.class01.TimeBasedExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
+import reactor.test.scheduler.VirtualTimeScheduler;
 
 import java.time.Duration;
 
 /**
  * 실제 시간을 가상 시간으로 대체하는 테스트 예제
- *  - thenAwait(Duration)을 통해 특정 시간만큼 가상으로 기다린다.
- *  - 즉, 특정 시간을 기다린 것처럼 시간을 당긴다.
+ *  - 특정 시간만큼 시간을 앞당긴다.
  */
-public class StepVerifierTimeBasedExample02Test {
+public class StepVerifierTimeBasedTestExample01 {
     @Test
     public void getCOVID19CountTest() {
         StepVerifier
@@ -21,7 +21,7 @@ public class StepVerifierTimeBasedExample02Test {
                     )
                 )
                 .expectSubscription()
-                .thenAwait(Duration.ofHours(12))
+                .then(() -> VirtualTimeScheduler.get().advanceTimeBy(Duration.ofHours(12)))
                 .expectNextCount(11)
                 .expectComplete()
                 .verify();

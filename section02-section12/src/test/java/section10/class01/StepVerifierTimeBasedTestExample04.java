@@ -11,7 +11,7 @@ import java.time.Duration;
 /**
  * expectNoEvent(Duration)으로 지정된 대기 시간동안 이벤트가 없을을 확인하는 예제
  */
-public class StepVerifierTimeBasedExample04Test {
+public class StepVerifierTimeBasedTestExample04 {
     @Test
     public void getCOVID19CountTest() {
         StepVerifier

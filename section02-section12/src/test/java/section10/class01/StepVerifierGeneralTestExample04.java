@@ -8,7 +8,7 @@ import reactor.test.StepVerifier;
 /**
  * onError signal 발생 여부를 검증
  */
-public class StepVerifierGeneralExample04Test {
+public class StepVerifierGeneralTestExample04 {
     @Test
     public void occurErrorTest() {
         Flux<Integer> source = Flux.just(2, 4, 6, 8, 10);

@@ -8,18 +8,16 @@ import reactor.test.publisher.TestPublisher;
 /**
  * TestPublisher 를 사용해서 서비스 로직의 메서드에 대한 Unit Test 를 실시하는 예제
  */
-public class TestPublisherExample03Test {
+public class TestPublisherTestExample01 {
     @Test
     public void divideByTwoTest() {
         TestPublisher<Integer> source = TestPublisher.create();
 
         StepVerifier
-                .create(GeneralExample.takeNumber(source.flux(), 3))
+                .create(GeneralExample.divideByTwo(source.flux()))
                 .expectSubscription()
-                .then(() -> source.next(1, 2, 3, 4, 5))
-                .expectNext(1)
-                .expectNext(2)
-                .expectNext(3)
+                .then(() -> source.next(2, 4, 6, 8, 10))
+                .expectNext(1, 2, 3, 4, 5)
                 .expectComplete()
                 .verify();
     }

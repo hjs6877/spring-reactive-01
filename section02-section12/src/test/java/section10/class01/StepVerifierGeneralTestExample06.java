@@ -10,7 +10,7 @@ import reactor.test.StepVerifierOptions;
  * onNext signal 을 통해 emit 된 데이터의 개수를 검증하는 예제
  *  - 검증에 실패할 경우에는 StepVerifierOptions에서 지정한 Scenario Name이 표시된다.
  */
-public class StepVerifierGeneralExample06Test {
+public class StepVerifierGeneralTestExample06 {
     @Test
     public void rangeNumberTest() {
         Flux<Integer> source = Flux.range(0, 1000);

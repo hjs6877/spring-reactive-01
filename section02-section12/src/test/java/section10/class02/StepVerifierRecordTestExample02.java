@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.is;
  *  - thenConsumeWhile()을 사용하여 조건에 맞는 데이터만 소비한다. 여기서 조건에 맞는 데이터들이 ArrayList 에 추가(기록)된다.
  *  - expectRecordedMatches()를 사용하여 기록된 데이터의 컬렉션을 검증한다.
  */
-public class StepVerifierRecordExample02Test {
+public class StepVerifierRecordTestExample02 {
     @Test
     public void getCountryTest() {
         StepVerifier

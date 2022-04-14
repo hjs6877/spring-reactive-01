@@ -11,7 +11,7 @@ import reactor.test.StepVerifier;
  *  - hasKey()를 사용하여 Context의 key가 존재하는지 검증한다.
  *  - then()을 사용하여 검증을 위한 후속 작업을 진행할 수 있다.
  */
-public class StepVerifierContextExample01Test {
+public class StepVerifierContextTestExample01 {
     final private static String KEY = "helloTarget";
 
     @Test
