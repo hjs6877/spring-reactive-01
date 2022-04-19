@@ -15,10 +15,7 @@ public class RangeExample03 {
     public static void main(String[] args) {
         Flux
             .range(7, 5)
-            .subscribe(idx -> {
-                int year = SampleData.btcTopPricesPerYear.get(idx).getT1();
-                long price = SampleData.btcTopPricesPerYear.get(idx).getT2();
-                Logger.onNext(year + "'s: " + price);
-            });
+            .map(idx -> SampleData.btcTopPricesPerYear.get(idx))
+            .subscribe(tuple -> Logger.onNext(tuple.getT1() + "'s: " + tuple.getT2()));
     }
 }
