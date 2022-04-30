@@ -1,11 +1,14 @@
 package com.itvillage.section11.class02;
 
+import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
 import com.itvillage.utils.TimeUtils;
 import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
+
+import java.util.List;
 
 /**
  * create 개념 이해 예제
@@ -16,23 +19,33 @@ public class CreateExample02 {
     public static int count = 0;
     public static void main(String[] args) {
         Logger.info("# start");
-        Flux.create((FluxSink<Integer> emitter) -> {
-            for (int i = 0; i <= size; i++) {
-                TimeUtils.sleep(1000L);
-                if (count == size) {
-                    Logger.info("# complete signal");
-                    emitter.complete();
-                } else {
-                    count++;
-                    emitter.next(i);
+
+        CryptoCurrencyPriceEmitter priceEmitter = new CryptoCurrencyPriceEmitter();
+
+        Flux.create((FluxSink<Integer> sink) -> {
+            priceEmitter.setListener(new CryptoCurrencyPriceListener() {
+                @Override
+                public void onPrice(List<Integer> priceList) {
+                    priceList.stream().forEach(price -> {
+                        sink.next(price);
+                    });
                 }
-            }
 
-            emitter.onRequest(n -> Logger.info("# onRequest: " + n + " : " + Long.MAX_VALUE));
-
-            emitter.onDispose(() -> {
-                Logger.info("# clean up");
+                @Override
+                public void onComplete() {
+                    sink.complete();
+                }
             });
-        }).subscribe(Logger::onNext);
+        }).subscribe(
+                data -> Logger.onNext(data),
+                error -> {},
+                () -> Logger.info("# onComplete"));
+
+        TimeUtils.sleep(3000L);
+
+        priceEmitter.flowInto(SampleData.btcPrices);
+
+        TimeUtils.sleep(2000L);
+        priceEmitter.complete();
     }
 }

@@ -7,6 +7,9 @@ import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * create 개념 이해 예제
  *  - Subscriber 가 request 할 경우에 next signal 이벤트를 발생하는 예제
@@ -14,25 +17,25 @@ import reactor.core.publisher.FluxSink;
  */
 public class CreateExample01 {
     public static int size = 0;
-    public static int count = 0;
+    public static int count = -1;
+    private static List<Integer> dataSource =
+            Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     public static void main(String[] args) {
         Logger.info("# start");
         Flux.create((FluxSink<Integer> emitter) -> {
             emitter.onRequest(n -> {
                 TimeUtils.sleep(1000L);
-                for (int i = 1; i <= n; i++) {
-                    if (count >= 10) {
+                for (int i = 0; i < n; i++) {
+                    if (count >= 9) {
                         emitter.complete();
                     } else {
                         count++;
-                        emitter.next(i);
+                        emitter.next(dataSource.get(count));
                     }
                 }
             });
 
-            emitter.onDispose(() -> {
-                Logger.info("# clean up");
-            });
+            emitter.onDispose(() -> Logger.info("# clean up"));
         }).subscribe(new BaseSubscriber<Integer>() {
             @Override
             protected void hookOnSubscribe(Subscription subscription) {
@@ -47,6 +50,11 @@ public class CreateExample01 {
                     request(2);
                     size = 0;
                 }
+            }
+
+            @Override
+            protected void hookOnComplete() {
+                Logger.onComplete("# onComplete");
             }
         });
     }

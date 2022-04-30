@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 public class SampleData {
     public static final List<String> coinNames = Arrays.asList("BTC", "ETH", "XRP", "ICX", "EOS", "BCH");
+    public static final List<Integer> btcPrices =
+            Arrays.asList(50_000_000, 50_100_000, 50_700_000, 51_500_000, 52_000_000);
     public static final List<Tuple2<String, Integer>> coins =
             Arrays.asList(
                     Tuples.of("BTC", 52_000_000),
