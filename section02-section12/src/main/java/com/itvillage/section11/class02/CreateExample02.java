@@ -7,6 +7,7 @@ import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.List;
 
@@ -36,16 +37,20 @@ public class CreateExample02 {
                     sink.complete();
                 }
             });
-        }).subscribe(
-                data -> Logger.onNext(data),
-                error -> {},
-                () -> Logger.info("# onComplete"));
+        })
+        .publishOn(Schedulers.parallel())
+        .subscribe(
+            data -> Logger.onNext(data),
+            error -> {},
+            () -> Logger.info("# onComplete"));
 
         TimeUtils.sleep(3000L);
 
-        priceEmitter.flowInto(SampleData.btcPrices);
+        priceEmitter.flowInto();
 
         TimeUtils.sleep(2000L);
         priceEmitter.complete();
+        
+        TimeUtils.sleep(100L);
     }
 }

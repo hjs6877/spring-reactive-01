@@ -1,5 +1,7 @@
 package com.itvillage.section11.class02;
 
+import com.itvillage.common.SampleData;
+
 import java.util.List;
 
 public class CryptoCurrencyPriceEmitter {
@@ -9,8 +11,8 @@ public class CryptoCurrencyPriceEmitter {
         this.listener = listener;
     }
 
-    public void flowInto(List<Integer> priceList) {
-        listener.onPrice(priceList);
+    public void flowInto() {
+        listener.onPrice(SampleData.btcPrices);
     }
     public void complete() {
         listener.onComplete();
