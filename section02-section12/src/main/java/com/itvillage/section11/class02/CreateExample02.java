@@ -50,7 +50,7 @@ public class CreateExample02 {
 
         TimeUtils.sleep(2000L);
         priceEmitter.complete();
-        
+
         TimeUtils.sleep(100L);
     }
 }
