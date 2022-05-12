@@ -19,10 +19,7 @@ public class FlatMapExample04 {
         Flux
                 .just(Tuples.of(500, 1000))
                 .flatMap(buyInfo -> calculateMaxProfitPerYear(buyInfo))
-
                 .subscribe(Logger::onNext);
-
-        TimeUtils.sleep(200L);
     }
 
     private static Flux<Long> calculateMaxProfitPerYear(Tuple2<Integer, Integer> buyInfo) {
