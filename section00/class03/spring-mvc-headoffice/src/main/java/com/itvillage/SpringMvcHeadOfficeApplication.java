@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalTime;
 
 @Slf4j
 @SpringBootApplication
@@ -27,22 +29,21 @@ public class SpringMvcHeadOfficeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMvcHeadOfficeApplication.class, args);
 	}
+
+	@Bean
+	public RestTemplateBuilder restTemplate() {
+		return new RestTemplateBuilder();
+	}
+
 	@Bean
 	public CommandLineRunner run() {
 		return (String... args) -> {
-			// 서버쪽으로 대량의 호출 및 시간 측정을 한다.
-			StopWatch stopWatch = new StopWatch("client -> server");
+			log.info("# 요청 시작 시간: {}", LocalTime.now());
 
-			for (int i = 1; i <= 30; i++) {
-				stopWatch.start("# 도서 조회");
-					Book book = this.getBook(i);
-					log.info("# 도서 처리 완료");
-				stopWatch.stop();
+			for (int i = 1; i <= 5; i++) {
+				Book book = this.getBook(i);
+				log.info("{}: book name: {}", LocalTime.now(), book.getName());
 			}
-
-
-			log.info(stopWatch.prettyPrint());
-			log.info("# 전체 조회 시간: {} ms", stopWatch.getTotalTimeMillis());
 		};
 	}
 
