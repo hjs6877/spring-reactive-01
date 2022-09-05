@@ -95,10 +95,10 @@ public class SampleData {
 
     public static Map<String, String> morseCodeMap = new HashMap<>();
     public static Map<String, Mono<String>> nppMap = new HashMap<>();
+    public static String[] morseCodes = {
+            ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--",
+            "-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
     static {
-        String[] morseCodes = {
-                ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--",
-                "-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
         for (char c = 'a'; c <= 'a' + 25; c++) {
             morseCodeMap.put(morseCodes[c - ('z' - 25)], Character.toString(c));
         }

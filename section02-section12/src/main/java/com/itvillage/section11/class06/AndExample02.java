@@ -38,5 +38,4 @@ public class AndExample02 {
                 .delayElement(Duration.ofSeconds(4))
                 .doOnNext(Logger::doOnNext);
     }
-
 }

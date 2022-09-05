@@ -30,8 +30,12 @@ public class SpringReactiveBranchOfficeController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{book-id}")
-    public Mono<Book> getBook(@PathVariable("book-id") long bookId) {
+    public Mono<Book> getBook(@PathVariable("book-id") long bookId) throws InterruptedException {
+        Thread.sleep(5000L);
+
         Book book = bookMap.get(bookId);
+
+        log.info("# book for response: {}, {}", book.getBookId(), book.getName());
 
         return Mono.just(book);
     }
