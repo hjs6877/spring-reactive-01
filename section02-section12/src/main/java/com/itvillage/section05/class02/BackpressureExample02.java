@@ -14,7 +14,6 @@ import java.util.concurrent.CountDownLatch;
 public class BackpressureExample02 {
     public static int count = 0;
     public static void main(String[] args) throws InterruptedException {
-        CountDownLatch latch = new CountDownLatch(1);
         Flux.range(1, 5)
             .doOnNext(Logger::doOnNext)
             .doOnRequest(Logger::doOnRequest)
@@ -34,13 +33,6 @@ public class BackpressureExample02 {
                         count = 0;
                     }
                 }
-
-                @Override
-                protected void hookOnComplete() {
-                    latch.countDown();
-                }
             });
-
-        latch.await();
     }
 }

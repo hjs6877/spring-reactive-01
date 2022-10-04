@@ -12,7 +12,7 @@ public class HotSequenceExample {
     public static void main(String[] args) {
         Flux<String> concertFlux =
                 Flux.fromStream(Stream.of("Singer A", "Singer B", "Singer C", "Singer D", "Singer E"))
-                        .delayElements(Duration.ofSeconds(1)).share();
+                        .delayElements(Duration.ofSeconds(1)).share();  //  share() 원본 Flux를 여러 Subscriber가 공유한다.
 
         concertFlux.subscribe(singer -> Logger.info("# Subscriber1 is watching {}'s song.", singer));
 
