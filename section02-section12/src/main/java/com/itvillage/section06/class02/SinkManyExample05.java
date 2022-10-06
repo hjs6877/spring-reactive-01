@@ -21,7 +21,5 @@ public class SinkManyExample05 {
 
         fluxView.subscribe(data -> Logger.onNext("Subscriber1", data));
         fluxView.subscribe(data -> Logger.onNext("Subscriber2", data));
-
-        TimeUtils.sleep(1000L);
     }
 }

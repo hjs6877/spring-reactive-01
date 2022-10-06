@@ -26,6 +26,6 @@ public class SinkManyExample01 {
         unicastSink.emitNext(3, FAIL_FAST);
 
         // TODO 주석 전, 후 비교해서 보여 줄 것.
-//        fluxView.subscribe(data -> Logger.onNext("Subscriber2", data));
+        fluxView.subscribe(data -> Logger.onNext("Subscriber2", data));
     }
 }

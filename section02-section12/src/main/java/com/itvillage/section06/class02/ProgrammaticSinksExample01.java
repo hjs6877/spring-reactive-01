@@ -32,10 +32,10 @@ public class ProgrammaticSinksExample01 {
                 });
 
         fluxView
-                .publishOn(Schedulers.parallel())
-                .map(result -> result + " success!")
-                .doOnNext(n -> log.info("# map(): {}", n))
-                .publishOn(Schedulers.parallel())
+//                .publishOn(Schedulers.parallel())
+//                .map(result -> result + " success!")
+//                .doOnNext(n -> log.info("# map(): {}", n))
+//                .publishOn(Schedulers.parallel())
                 .subscribe(data -> log.info("# onNext: {}", data));
 
         Thread.sleep(200L);
