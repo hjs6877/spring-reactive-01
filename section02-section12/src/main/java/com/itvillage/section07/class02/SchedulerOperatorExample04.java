@@ -16,7 +16,6 @@ public class SchedulerOperatorExample04 {
                 .doOnNext(data -> Logger.doOnNext("fromArray", data))
                 .filter(data -> data > 3)
                 .doOnNext(data -> Logger.doOnNext("filter", data))
-                .publishOn(Schedulers.parallel())
                 .map(data -> data * 10)
                 .doOnNext(data -> Logger.doOnNext("map", data))
                 .subscribe(Logger::onNext);

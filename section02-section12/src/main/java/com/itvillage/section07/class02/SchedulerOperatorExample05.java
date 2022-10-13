@@ -6,18 +6,19 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * Operator 체인의 어떤 위치에 있든 간에 하나 이상의 subscribeOn()이 있다면 가장 상위에 위치한
- * subscribeOn()이 구독 직 후 실행 쓰레드를 변경한다.
+ * subscribeOn( )과 publishOn( )이 같이 있다면, publishOn( )을 만나기 전 까지의 Upstream Operator 체인은
+ * subscribeOn( )에서 지정한 쓰레드에서 실행되고, publishOn( )을 만날때마다
+ * publishOn( ) 아래의 Operator 체인 downstream은 publishOn( )에서 지정한 쓰레드에서 실행된다.
  */
 public class SchedulerOperatorExample05 {
     public static void main(String[] args) {
         Flux.fromArray(new Integer[] {1, 3, 5, 7})
+                .subscribeOn(Schedulers.boundedElastic())
                 .filter(data -> data > 3)
                 .doOnNext(data -> Logger.doOnNext("filter", data))
-                .subscribeOn(Schedulers.boundedElastic())
+                .publishOn(Schedulers.parallel())
                 .map(data -> data * 10)
                 .doOnNext(data -> Logger.doOnNext("map", data))
-                .subscribeOn(Schedulers.parallel()) // 비교를 위해서 parallel()을 적용
                 .subscribe(Logger::onNext);
 
         TimeUtils.sleep(500L);
