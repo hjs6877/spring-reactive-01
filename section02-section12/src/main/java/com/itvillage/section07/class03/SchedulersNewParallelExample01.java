@@ -10,9 +10,10 @@ import reactor.core.scheduler.Schedulers;
  */
 public class SchedulersNewParallelExample01 {
     public static void main(String[] args) {
-        Mono<Integer> flux = Mono.just(1)
-                .log()
-                .publishOn(Schedulers.newParallel("Parallel Thread", 4, true));
+        Mono<Integer> flux =
+                    Mono
+                        .just(1)
+                        .publishOn(Schedulers.newParallel("Parallel Thread", 4, true));
 
 
         flux.subscribe(data -> {
@@ -21,12 +22,12 @@ public class SchedulersNewParallelExample01 {
         });
 
         flux.subscribe(data -> {
-            TimeUtils.sleep(3000L);
+            TimeUtils.sleep(4000L);
             Logger.onNext("subscribe 2", data);
         });
 
         flux.subscribe(data -> {
-            TimeUtils.sleep(2000L);
+            TimeUtils.sleep(3000L);
             Logger.onNext("subscribe 3", data);
         });
 
@@ -35,6 +36,6 @@ public class SchedulersNewParallelExample01 {
             Logger.onNext("subscribe 4", data);
         });
 
-        TimeUtils.sleep(5000L);
+        TimeUtils.sleep(6000L);
     }
 }
