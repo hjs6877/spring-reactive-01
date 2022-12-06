@@ -21,10 +21,10 @@ public class ContextFetureExample01 {
 
 
         mono.contextWrite(context -> context.put(key1, "itVillage"))
-            .subscribe(Logger::onNext);
+            .subscribe(data -> Logger.onNext("subscriber 1", data));
 
         mono.contextWrite(context -> context.put(key1, "itWorld"))
-            .subscribe(Logger::onNext);
+            .subscribe(data -> Logger.onNext("subscriber 2", data));
 
 
         TimeUtils.sleep(100L);

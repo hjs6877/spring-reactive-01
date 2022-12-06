@@ -25,11 +25,12 @@ public class ContextRealExample01 {
 
     private static Mono<String> postBook(Mono<Book> book) {
         return Mono.zip(book, Mono.deferContextual(ctx -> Mono.just(ctx.get(HEADER_NAME_AUTH_TOKEN))))
+                .flatMap(tuple -> Mono.just(tuple))  // 외부 API 서버로 HTTP POST request를 전송한다고 가정
                 .flatMap(tuple -> {
                     String response = "POST the book(" + tuple.getT1().getBookName() +
                             "," + tuple.getT1().getAuthor() + ") with token: " +
-                            tuple.getT2();
-                    return Mono.just(response); // HTTP POST 전송을 했다고 가정
+                            tuple.getT2();q
+                    return Mono.just(response); // HTTP response를 수신했다고 가정
                 });
     }
 }

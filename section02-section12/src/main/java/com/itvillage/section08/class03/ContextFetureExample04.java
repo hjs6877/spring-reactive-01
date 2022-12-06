@@ -14,7 +14,7 @@ public class ContextFetureExample04 {
     public static void main(String[] args) {
         String key1 = "id";
         Mono.just("Kevin")
-//            .transformDeferredContextual((stringMono, contextView) -> contextView.get("job")) // TODO 주석 해제 후, inner Context에 접근할 수 없다는것을 설명.
+            .transformDeferredContextual((stringMono, contextView) -> contextView.get("job"))
             .flatMap(name -> Mono.deferContextual(ctx ->
                     Mono.just(ctx.get(key1) + ", " + name)
                         .transformDeferredContextual((mono, innerCtx) ->

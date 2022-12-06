@@ -8,7 +8,7 @@ import reactor.core.scheduler.Schedulers;
 /**
  * Context의 특징
  *  - Context는 체인의 맨 아래에서부터 위로 전파된다.
- *      - 따라서 Operator 체인에서 Context read 메서드가 Context write 메서드 밑에 있을 경우에는 write된 값을 read할 수 없다.
+ *      - 따라서 Operator 체인에서 Context read 읽는 동작이 Context write 동작 밑에 있을 경우에는 write된 값을 read할 수 없다.
  */
 public class ContextFetureExample02 {
     public static void main(String[] args) {
