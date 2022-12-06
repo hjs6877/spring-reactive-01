@@ -29,7 +29,7 @@ public class ContextRealExample01 {
                 .flatMap(tuple -> {
                     String response = "POST the book(" + tuple.getT1().getBookName() +
                             "," + tuple.getT1().getAuthor() + ") with token: " +
-                            tuple.getT2();q
+                            tuple.getT2();
                     return Mono.just(response); // HTTP response를 수신했다고 가정
                 });
     }
