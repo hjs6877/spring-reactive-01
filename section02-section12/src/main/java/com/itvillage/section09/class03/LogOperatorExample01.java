@@ -1,4 +1,4 @@
-package com.itvillage.section09.class01;
+package com.itvillage.section09.class03;
 
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
@@ -8,10 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * log() operator와 Debug mode 를 같이 사용한 예제
- * - log()는 에러 발생 시, stacktrace와 함께 traceback도 같이 출력한다.
+ * log() operator를 사용한 예제
  */
-public class LogOperatorExample02 {
+public class LogOperatorExample01 {
     public static Map<String, String> fruits = new HashMap<>();
 
     static {
@@ -22,16 +21,11 @@ public class LogOperatorExample02 {
     }
 
     public static void main(String[] args) {
-        Hooks.onOperatorDebug();
-
         Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
                 .log()
                 .map(String::toLowerCase)
-                .log()
                 .map(fruit -> fruit.substring(0, fruit.length() - 1))
-                .log()
                 .map(fruits::get)
-                .log()
                 .subscribe(Logger::onNext, Logger::onError);
     }
 }

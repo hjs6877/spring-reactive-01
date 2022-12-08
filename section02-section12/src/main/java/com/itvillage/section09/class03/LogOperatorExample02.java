@@ -1,18 +1,17 @@
-package com.itvillage.section09.class01;
+package com.itvillage.section09.class03;
 
 import com.itvillage.utils.Logger;
-import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * log() operator Custom Category 를 사용하는 예제
+ * log() operator와 Debug mode 를 같이 사용한 예제
+ * - log()는 에러 발생 시, stacktrace와 함께 traceback도 같이 출력한다.
  */
-public class LogOperatorExample03 {
+public class LogOperatorExample02 {
     public static Map<String, String> fruits = new HashMap<>();
 
     static {
@@ -23,18 +22,16 @@ public class LogOperatorExample03 {
     }
 
     public static void main(String[] args) {
-        Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
-                .subscribeOn(Schedulers.boundedElastic())
-                .log("Fruit.Source")
-                .publishOn(Schedulers.parallel())
-                .map(String::toLowerCase)
-                .log("Fruit.Lower")
-                .map(fruit -> fruit.substring(0, fruit.length() - 1))
-                .log("Fruit.Substring")
-                .map(fruits::get)
-                .log("Fruit.Name")
-                .subscribe(Logger::onNext, Logger::onError);
+        Hooks.onOperatorDebug();
 
-        TimeUtils.sleep(100L);
+        Flux.fromArray(new String[]{"BANANAS", "APPLES", "PEARS", "MELONS"})
+                .log()
+                .map(String::toLowerCase)
+                .log()
+                .map(fruit -> fruit.substring(0, fruit.length() - 1))
+                .log()
+                .map(fruits::get)
+                .log()
+                .subscribe(Logger::onNext, Logger::onError);
     }
 }
