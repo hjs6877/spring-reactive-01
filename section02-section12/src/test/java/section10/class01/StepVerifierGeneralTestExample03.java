@@ -16,7 +16,7 @@ public class StepVerifierGeneralTestExample03 {
                 .expectSubscription()
                 .as("# expect subscription")
                 .expectNext("Hi")
-                .as("expected Hi")
+                .as("# expect Hi")
                 .expectNext("Reactor")
                 .as("# expect Reactor")
                 .verifyComplete();
