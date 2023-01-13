@@ -21,7 +21,7 @@ public class StepVerifierTimeBasedTestExample03 {
                 )
                 .expectSubscription()
                 .expectNextCount(11)
-                .expectError()
+                .expectComplete()
                 .verify(Duration.ofSeconds(3));
     }
 }
