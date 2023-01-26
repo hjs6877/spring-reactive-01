@@ -20,8 +20,7 @@ public class StepVerifierBackpressureTestExample03 {
                 .expectComplete()
                 .verifyThenAssertThat()
                 .hasDiscardedElements()
-                .hasDiscarded(2, 3, 4, 5, 6, 99, 99, 100);
-//                .hasDropped(2, 3, 4, 5, 6, 99, 99, 100);
-
+                .hasDiscarded(2, 3, 4, 5, 6, 98, 99, 100);
+//                .hasDropped(2, 3, 4, 5, 6, 98, 99, 100);
     }
 }

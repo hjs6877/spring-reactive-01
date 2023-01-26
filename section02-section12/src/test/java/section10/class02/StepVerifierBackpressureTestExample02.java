@@ -24,7 +24,6 @@ public class StepVerifierBackpressureTestExample02 {
                 .hasDiscardedElements()
                 .hasDiscarded(2)
                 .hasDroppedElements()
-                .hasDropped(3, 4, 5, 6, 99, 99, 100);
-
+                .hasDropped(3, 4, 5, 6, 98, 99, 100);
     }
 }
