@@ -3,9 +3,6 @@ package com.itvillage.section11.class01;
 import com.itvillage.common.SampleData;
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
-import reactor.util.function.Tuple2;
-
-import java.util.List;
 
 /**
  * range()의 사용 예제

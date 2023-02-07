@@ -4,8 +4,6 @@ import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
-import java.time.Duration;
-
 public class TimeBasedExample {
     public static Flux<Tuple2<String, Integer>> getCOVID19Count(Flux<Long> source) {
         return source

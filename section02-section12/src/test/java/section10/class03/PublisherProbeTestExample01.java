@@ -2,7 +2,6 @@ package section10.class03;
 
 import com.itvillage.section10.class03.PublisherProbeExample;
 import org.junit.jupiter.api.Test;
-import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 import reactor.test.publisher.PublisherProbe;
 

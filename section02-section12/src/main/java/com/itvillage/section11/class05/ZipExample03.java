@@ -6,10 +6,6 @@ import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuple3;
-import reactor.util.function.Tuples;
-
-import java.time.Duration;
-import java.util.Arrays;
 
 /**
  * zip 활용 예제

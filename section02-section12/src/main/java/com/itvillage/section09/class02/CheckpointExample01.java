@@ -2,7 +2,6 @@ package com.itvillage.section09.class02;
 
 import com.itvillage.utils.Logger;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Hooks;
 
 /**
  * checkpoint() Operator 를 이용한 예제

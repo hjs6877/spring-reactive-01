@@ -7,9 +7,6 @@ import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
 /**
  * emit 되는 모든 데이터들을 캡쳐하여 컬렉션에 기록한 후, 기록된 데이터들을 검증하는 예제
  *  - recordWith()를 사용하여 emit 된 데이터를 기록하는 세션을 시작한다.

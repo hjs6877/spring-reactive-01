@@ -1,9 +1,8 @@
 package com.itvillage.section04.class02;
 
 import com.itvillage.utils.Logger;
-import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 import com.itvillage.utils.TimeUtils;
+import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.util.stream.Stream;
