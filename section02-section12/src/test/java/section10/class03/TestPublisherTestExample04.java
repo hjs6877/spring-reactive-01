@@ -13,6 +13,7 @@ public class TestPublisherTestExample04 {
     @Test
     public void divideByTwoTest() {
         TestPublisher<Integer> source = TestPublisher.createNoncompliant(TestPublisher.Violation.ALLOW_NULL);
+//        TestPublisher<Integer> source = TestPublisher.create();
 
         StepVerifier
                 .create(GeneralExample.divideByTwo(source.flux()))

@@ -7,6 +7,8 @@ import reactor.test.publisher.TestPublisher;
 
 /**
  * TestPublisher 를 사용해서 서비스 로직의 메서드에 대한 Unit Test 를 실시하는 예제
+ *  - 정상 동작하는 TestPublisher
+ *  - next() 사용
  */
 public class TestPublisherTestExample01 {
     @Test

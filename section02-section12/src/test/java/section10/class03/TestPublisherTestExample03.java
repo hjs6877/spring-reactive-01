@@ -7,6 +7,8 @@ import reactor.test.publisher.TestPublisher;
 
 /**
  * TestPublisher 를 사용해서 서비스 로직의 메서드에 대한 Unit Test 를 실시하는 예제
+ *  - 정상 동작하는 TestPublisher
+ *  - emit() 사용
  */
 public class TestPublisherTestExample03 {
     @Test
@@ -14,9 +16,9 @@ public class TestPublisherTestExample03 {
         TestPublisher<Integer> source = TestPublisher.create();
 
         StepVerifier
-                .create(GeneralExample.takeNumber(source.flux(), 3))
+                .create(source.flux())
                 .expectSubscription()
-                .then(() -> source.next(1, 2, 3, 4, 5))
+                .then(() -> source.emit(1, 2, 3))
                 .expectNext(1)
                 .expectNext(2)
                 .expectNext(3)
