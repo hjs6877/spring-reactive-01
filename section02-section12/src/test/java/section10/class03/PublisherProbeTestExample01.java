@@ -11,13 +11,12 @@ public class PublisherProbeTestExample01 {
         PublisherProbe<String> probe = PublisherProbe.of(PublisherProbeExample.useStandbyPower());
 
         StepVerifier
-                .create(PublisherProbeExample.processTask(PublisherProbeExample.useMainPower(), probe.mono()))
+                .create(PublisherProbeExample.processWith(PublisherProbeExample.useMainPower(), probe.mono()))
                 .expectNextCount(1)
                 .verifyComplete();
 
         probe.assertWasSubscribed();
         probe.assertWasRequested();
         probe.assertWasNotCancelled();
-
     }
 }
