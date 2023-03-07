@@ -20,10 +20,10 @@ public class UsingExample02 {
         Path path = Paths.get("D:\\resources\\using_example.txt");
 
         Flux
-                .using(() -> Files.lines(path),
-                        Flux::fromStream,
-                        Stream::close
-                )
-                .subscribe(Logger::onNext);
+            .using(() -> Files.lines(path),
+                    stream -> Flux.fromStream(stream),
+                    Stream::close
+            )
+            .subscribe(Logger::onNext);
     }
 }

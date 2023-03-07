@@ -17,10 +17,10 @@ public class DeferExample02 {
     public static void main(String[] args) {
         Logger.info("# Start");
         Mono
-                .just("Hello")
-                .delayElement(Duration.ofSeconds(2))
-                .switchIfEmpty(sayDefault())
-                .subscribe(Logger::onNext);
+            .just("Hello")
+            .delayElement(Duration.ofSeconds(2))
+            .switchIfEmpty(sayDefault())
+            .subscribe(Logger::onNext);
 
         TimeUtils.sleep(2500);
     }

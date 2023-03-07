@@ -1,6 +1,7 @@
 package com.itvillage.section11.class02;
 
 import com.itvillage.utils.Logger;
+import com.itvillage.utils.TimeUtils;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
@@ -12,11 +13,13 @@ import java.time.Duration;
 public class DeferExample04 {
     public static void main(String[] args) {
         Logger.info("# Start");
-        Mono
-                .empty()
-                .delayElement(Duration.ofSeconds(3))
-                .switchIfEmpty(Mono.defer(DeferExample04::sayDefault))
-                .subscribe(Logger::onNext);
+        Mono<Object> mono =
+                Mono
+                    .empty()
+                    .switchIfEmpty(Mono.defer(DeferExample04::sayDefault));
+
+        TimeUtils.sleep(3000);
+        mono.subscribe(Logger::onNext);
     }
 
     private static Mono<String> sayDefault() {
