@@ -16,8 +16,8 @@ import java.util.List;
  *  - generate operator 와 달리 한번에 여러 건의 next signal 이벤트를 발생 시킬 수 있다.
  */
 public class CreateExample01 {
-    public static int size = 0;
-    public static int count = -1;
+    public static int SIZE = 0;
+    public static int COUNT = -1;
     private static List<Integer> dataSource =
             Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     public static void main(String[] args) {
@@ -26,11 +26,11 @@ public class CreateExample01 {
             emitter.onRequest(n -> {
                 TimeUtils.sleep(1000L);
                 for (int i = 0; i < n; i++) {
-                    if (count >= 9) {
+                    if (COUNT >= 9) {
                         emitter.complete();
                     } else {
-                        count++;
-                        emitter.next(dataSource.get(count));
+                        COUNT++;
+                        emitter.next(dataSource.get(COUNT));
                     }
                 }
             });
@@ -44,11 +44,11 @@ public class CreateExample01 {
 
             @Override
             protected void hookOnNext(Integer value) {
-                size++;
+                SIZE++;
                 Logger.onNext(value);
-                if (size == 2) {
+                if (SIZE == 2) {
                     request(2);
-                    size = 0;
+                    SIZE = 0;
                 }
             }
 

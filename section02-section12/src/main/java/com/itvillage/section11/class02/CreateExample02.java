@@ -13,8 +13,6 @@ import java.util.List;
  *  - Subscriber의 request와 상관없이 next signal 이벤트를 발생하는 예제
  */
 public class CreateExample02 {
-    public static int size = 10;
-    public static int count = 0;
     public static void main(String[] args) {
         Logger.info("# start");
 
