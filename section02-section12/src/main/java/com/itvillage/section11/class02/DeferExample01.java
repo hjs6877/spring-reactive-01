@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  * Defer 사용 예제
- *  - 실제로 구독이 발생하는 시점에 데이터를 emit 하는 예제
+ *  - 실제로 구독이 발생하는 시점에 데이터를 emit 하는 예제.
  */
 public class DeferExample01 {
     public static void main(String[] args) {
