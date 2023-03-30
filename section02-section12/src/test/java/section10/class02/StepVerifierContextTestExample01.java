@@ -1,6 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.ContextExample;
+import com.itvillage.section10.class01.ContextExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;

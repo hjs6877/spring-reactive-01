@@ -1,6 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.BackpressureExample;
+import com.itvillage.section10.class01.BackpressureExample;
 import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
 

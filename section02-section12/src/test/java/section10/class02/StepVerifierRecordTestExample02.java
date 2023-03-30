@@ -1,6 +1,6 @@
 package section10.class02;
 
-import com.itvillage.section10.class02.RecordExample;
+import com.itvillage.section10.class01.RecordExample;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
