@@ -13,7 +13,7 @@ import java.time.Duration;
  */
 public class SkipUntilOtherExample {
     public static void main(String[] args) {
-        Flux.interval(Duration.ofMillis(500))
+        Flux.interval(Duration.ofSeconds(1))
                 .skipUntilOther(doSomeTask())
                 .subscribe(Logger::onNext);
 
@@ -21,6 +21,6 @@ public class SkipUntilOtherExample {
     }
 
     private static Publisher<?> doSomeTask() {
-        return Mono.empty().delay(Duration.ofSeconds(2));
+        return Mono.empty().delay(Duration.ofMillis(2500));
     }
 }
